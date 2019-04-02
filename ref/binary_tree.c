@@ -62,8 +62,7 @@ Tree* tree_next(Tree* t,int lr)
 }
 
 
-
-// Print Tree Node index & value
+#pragma region Print Tree Node index & value
 void tree_print_info(Tree* t)
 {
     if(t == NULL)
@@ -106,8 +105,10 @@ void tree_print(Tree* t)
     
 }
 
+#pragma endregion
 
 
+#pragma region Tree Traversal
 // Pre-Order Traversal
 void tree_pre_order(Tree* root)
 {
@@ -168,3 +169,5 @@ void tree_traversal(Tree* root, int OrderType)
             break;
     }
 }
+
+#pragma endregion
