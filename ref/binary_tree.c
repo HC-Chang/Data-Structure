@@ -17,6 +17,7 @@ typedef struct
 enum{Left,Right};
 enum{PreOrder,InOrder,PostOrder};
 
+// Tree Initialize
 Tree* l_root(void)
 {
     Tree *temp = (Tree*)malloc(sizeof(Tree));
@@ -31,6 +32,9 @@ Tree* l_root(void)
     return temp;
 }
 
+
+
+// Add Tree Node 
 Tree* tree_next(Tree* t,int lr)
 {
     Len++;
@@ -57,6 +61,9 @@ Tree* tree_next(Tree* t,int lr)
     return t;
 }
 
+
+
+// Print Tree Node index & value
 void tree_print_info(Tree* t)
 {
     if(t == NULL)
@@ -72,7 +79,7 @@ void tree_print_info(Tree* t)
     
 }
 
-
+// Print Tree Node info
 void tree_print(Tree* t)
 {
     Tree* temp = t;
@@ -101,7 +108,7 @@ void tree_print(Tree* t)
 
 
 
-// Pre-Order
+// Pre-Order Traversal
 void tree_pre_order(Tree* root)
 {
     Tree* temp = root;
@@ -141,6 +148,7 @@ void tree_pre_order(Tree* root)
 
 }
 
+// Tree Traversal
 void tree_traversal(Tree* root, int OrderType)
 {
     switch (OrderType)
