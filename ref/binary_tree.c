@@ -121,20 +121,14 @@ void tree_pre_order(Tree* root)
         
         return;
     }
-
-    printf("\n%i",temp->index);
-
-    if(temp->last == NULL)
-    {
-        printf(" - root");
-    }
+    
+    printf("%i\n",temp->index);
 
     if(temp->left != NULL)
     {
         temp = (Tree*)temp->left;
         tree_pre_order(temp);
         temp = (Tree*)temp->last;
-        printf("-%i",temp->index);
         
     }
 
@@ -143,11 +137,65 @@ void tree_pre_order(Tree* root)
         temp = (Tree*)temp->right;
         tree_pre_order(temp);
         temp = (Tree*)temp->last;
-        printf("-%i",temp->index);
 
     }
 
 }
+
+// In-Order     
+void tree_in_order(Tree* root)
+{
+    Tree* temp = root;
+    
+
+    if(temp == NULL)
+    {
+        printf("--- No Child ---\n");
+        
+        return;
+    }
+
+    if(temp->left != NULL)
+    {
+        temp = temp->left;
+
+        tree_in_order(temp);
+        // printf("%i\n",temp->index);
+
+        temp = temp->last;
+    }
+
+    printf("%i\n",temp->index);
+
+    if(temp->right != NULL)
+    {
+        temp = temp->right;       
+        tree_in_order(temp);         
+        // printf("%i\n",temp->index);
+        temp = temp->last;
+    }
+    
+
+
+    
+}
+
+
+
+// Post-Order Traversal
+void tree_post_order(Tree* root)
+{
+    Tree* temp = root;
+    
+
+    if(temp == NULL)
+    {
+        printf("--- No Child ---\n");
+        
+        return;
+    }
+}
+
 
 // Tree Traversal
 void tree_traversal(Tree* root, int OrderType)
@@ -155,13 +203,18 @@ void tree_traversal(Tree* root, int OrderType)
     switch (OrderType)
     {
         case PreOrder:
+            printf("\nPre Order:\n");
             tree_pre_order(root);
             break;
 
         case InOrder:
+            printf("\nIn Order:\n");
+            tree_in_order(root);
             break;
         
         case PostOrder:
+            printf("\nPost Order:\n");
+            tree_post_order(root);
             break;
 
 
