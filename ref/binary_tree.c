@@ -160,7 +160,6 @@ void tree_in_order(Tree* root)
         temp = temp->left;
 
         tree_in_order(temp);
-        // printf("%i\n",temp->index);
 
         temp = temp->last;
     }
@@ -171,7 +170,6 @@ void tree_in_order(Tree* root)
     {
         temp = temp->right;       
         tree_in_order(temp);         
-        // printf("%i\n",temp->index);
         temp = temp->last;
     }
     
@@ -194,6 +192,24 @@ void tree_post_order(Tree* root)
         
         return;
     }
+
+     if(temp->left != NULL)
+    {
+        temp = temp->left;
+
+        tree_post_order(temp);
+
+        temp = temp->last;
+    }
+
+    if(temp->right != NULL)
+    {
+        temp = temp->right;       
+        tree_post_order(temp);         
+        temp = temp->last;
+    }
+
+    printf("%i\n",temp->index);
 }
 
 

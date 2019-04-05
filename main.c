@@ -24,6 +24,9 @@ int main(int argc, char *argv[])
     // tree_print(root);
     // tree_print(current);
 
+
+
+    // Tree Traversal
     // tree_traversal(root,PreOrder);
     // tree_traversal(root,InOrder);
     tree_traversal(root,PostOrder);
