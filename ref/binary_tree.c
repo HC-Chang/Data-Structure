@@ -15,7 +15,7 @@ typedef struct
 }Tree;
 
 enum{Left,Right};
-enum{PreOrder,InOrder,PostOrder};
+enum{PreOrder,InOrder,PostOrder,LevelOrder};
 
 // Tree Initialize
 Tree* l_root(void)
@@ -157,20 +157,20 @@ void tree_in_order(Tree* root)
 
     if(temp->left != NULL)
     {
-        temp = temp->left;
+        temp = (Tree*)temp->left;
 
         tree_in_order(temp);
 
-        temp = temp->last;
+        temp = (Tree*)temp->last;
     }
 
     printf("%i\n",temp->index);
 
     if(temp->right != NULL)
     {
-        temp = temp->right;       
+        temp = (Tree*)temp->right;       
         tree_in_order(temp);         
-        temp = temp->last;
+        temp = (Tree*)temp->last;
     }
     
 
@@ -195,23 +195,72 @@ void tree_post_order(Tree* root)
 
      if(temp->left != NULL)
     {
-        temp = temp->left;
+        temp = (Tree*)temp->left;
 
         tree_post_order(temp);
 
-        temp = temp->last;
+        temp = (Tree*)temp->last;
     }
 
     if(temp->right != NULL)
     {
-        temp = temp->right;       
+        temp = (Tree*)temp->right;       
         tree_post_order(temp);         
-        temp = temp->last;
+        temp = (Tree*)temp->last;
     }
 
     printf("%i\n",temp->index);
 }
 
+// Level-Order Traversal
+// FIXME 
+void tree_level_order(Tree* root)
+{
+    Tree* temp = root;
+    
+
+    if(temp == NULL)
+    {
+        printf("--- No Child ---\n");
+        
+        return;
+    }
+
+
+    if(temp->last == NULL)
+    {
+        printf("%i\n",temp->index);
+    }
+
+     if(temp->left != NULL)
+    {
+        temp = (Tree*)temp->left;
+        printf("%i\n",temp->index);
+        temp = (Tree*)temp->last;
+    }
+     if(temp->right != NULL)
+    {
+        temp = (Tree*)temp->right;
+        printf("%i\n",temp->index);
+        temp = (Tree*)temp->last;
+    }
+
+
+
+    if(temp->left != NULL)
+    {
+        temp = (Tree*)temp->left;
+        tree_level_order(temp);
+        temp = (Tree*)temp->last;
+    }
+
+    if(temp->right != NULL)
+    {
+        temp = (Tree*)temp->right;
+        tree_level_order(temp);
+        temp = (Tree*)temp->last;
+    }
+}
 
 // Tree Traversal
 void tree_traversal(Tree* root, int OrderType)
@@ -233,6 +282,10 @@ void tree_traversal(Tree* root, int OrderType)
             tree_post_order(root);
             break;
 
+        case LevelOrder:
+            printf("\nLevel Order:\n");
+            tree_level_order(root);
+            break;
 
         default:
             break;
