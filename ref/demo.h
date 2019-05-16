@@ -8,7 +8,10 @@
 
 // Binary Tree
 void Demo_Binary_Tree()
-{    // 0
+{   
+    printf("--- Binary Tree ---\n");
+
+    // 0
     Tree* root = l_root();
     Tree* temp = root;
 
